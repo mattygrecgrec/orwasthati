@@ -6,6 +6,7 @@ const setList = (results) => {
 const getData = (buttonResults) => {
     fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
       "method": "POST",
+        "mode": "no-cors",
       "headers": {
         "content-type": "text/plain"
       },
