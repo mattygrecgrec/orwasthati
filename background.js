@@ -1,23 +1,26 @@
-//define a few functions we'll use later during the lookup
-const examineIt = (stuff) => {
-    console.log(stuff)
-    return stuff;
+
+const getData = (buttonResults) => {
+    fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
+      "method": "POST",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "artists": [
+          "James Joyce",
+          "Bob Dylan"
+        ],
+        "dob": "1986-10-10"
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
-const dealWithResponse = (stuff) => {
-    let expertInfo = stuff.json()
-   // console.log('The expert info response is   ' + expertInfo)
-    return expertInfo;
-}
-
-const checkHttp = (promise) => {
- //   console.log('the status of the request is  ' + promise.status)
-    if (promise.status !== 200) {
-        alert('uh oh...problem getting the expert info back ' + promise.status);
-    }
-    return promise;
-}
 
 
-
-const
+document.getElementById("generateTable").addEventListener("click", getData);

@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+:root {
+    /* Sizes */
+    --header-height: 75px;
+    --standard-margin: 24px;
+    --standard-input-height: 30px;
+    --border-radius: 4px;
+
+    /* Colors */
+    --main-background: black;
+    --expert-prez-bkd-color: #c93920;
+    --input-border-color: rgb(180, 180, 180);
+
+    /* Fonts */
+    --font-title-family: 'Lobster', cursive;;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
