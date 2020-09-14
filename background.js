@@ -1,9 +1,15 @@
+const setList = (results) => {
+    
+}
+
 
 const getData = (buttonResults) => {
     fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
       "method": "POST",
+      "mode": "no-cors",
       "headers": {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       "body": {
         "artists": [
@@ -16,10 +22,12 @@ const getData = (buttonResults) => {
     .then(response => {
       console.log(response);
     })
+    .then(setList)
     .catch(err => {
       console.error(err);
     });
 }
+
 
 
 
