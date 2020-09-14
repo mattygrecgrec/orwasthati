@@ -8,7 +8,7 @@ const getData = (buttonResults) => {
       "method": "POST",
       "mode": "no-cors",
       "headers": {
-        "content-type": "application/json",
+        "content-type": "text/plain",
         "Access-Control-Allow-Origin": "*"
       },
       "body": {
