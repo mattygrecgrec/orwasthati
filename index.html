@@ -2,39 +2,38 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<header style="font-size:5vw;color:grey;text-align:justify">
+<header style="font-size:1vw;color:grey;text-align:justify">
 What relation existed between their ages?
 16 years before in 1888 when Bloom was of Stephen's present age Stephen was 6.16 years after in 1920 when Stephen would be of Bloom's present age Bloom would be 54. In 1936 when Bloom would be 70 and Stephen 54 their ages initially in the ratio of 16 to 0 would be as 17 1/2 to 13 1/2, the proportion increasing and the disparity diminishing according as arbitrary future years were added, for if the proportion existing in 1883 had continued immutable, conceiving that to be possible, till then 1904 when Stephen was 22 Bloom would be 374 and in 1920 when Stephen would be 38, as Bloom then was, Bloom would be 646 while in 1952 when Stephen would have attained the maximum postdiluvian age of 70 Bloom, being 1190 years alive having been born in the year 714, would have surpassed by 221 years the maximum antediluvian age, that of Methusalah, 969 years, while, if Stephen would continue to live until he would attain that age in the year 3072 A.D., Bloom would have been obliged to have been alive 83,300 years, having been obliged to have been born in the year 81,396 B.C.
 </header>
 <body>
 <p> What is your birthday?</p>
-<select name="DOBMonth">
+<select id="DOBMonth">
 <option>- Month -</option>
-<option value="January">January</option>
-<option value="Febuary">Febuary</option>
-<option value="March">March</option>
-<option value="April">April</option>
-<option value="May">May</option>
-<option value="June">June</option>
-<option value="July">July</option>
-<option value="August">August</option>
-<option value="September">September</option>
-<option value="October">October</option>
-<option value="November">November</option>
-<option value="December">December</option>
-</select><select name="DOBDay">
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select><select id="DOBDay">
 <option>- Day -</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
+<option value="01">1</option>
+<option value="02">2</option>
+<option value="03">3</option>
+<option value="04">4</option>
+<option value="05">5</option>
+<option value="06">6</option>
+<option value="07">7</option>
+<option value="08">8</option>
+<option value="09">9</option>
 <option value="10">10</option>
 <option value="11">11</option>
 <option value="12">12</option>
@@ -57,7 +56,7 @@ What relation existed between their ages?
 <option value="29">29</option>
 <option value="30">30</option>
 <option value="31">31</option>
-</select><select name="DOBYear">
+</select><select id="DOBYear">
 <option>- Year -</option>
 <option value="2020">2020</option>
 <option value="2019">2019</option>
@@ -151,7 +150,10 @@ What relation existed between their ages?
 <option value="1931">1931</option>
 <option value="1930">1930</option>
 </select>
-<button id="generateTable">Go</button>
+<button id="generateTable" style="display:none">Go</button>
+<div id="worksResults">
+    <ul id="workResultsText"></ul>
+</div>
 <script src="background.js"></script>
 </body>
 </html>
