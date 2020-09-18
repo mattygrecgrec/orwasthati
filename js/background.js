@@ -26,6 +26,15 @@ const paintIt = (stuff) => {
     d1 = d.toISOString()
     let gender
     
+    //remove existing entries
+    let ul = document.getElementById('workResultsText');
+    if (ul) {
+        while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+        }
+    }
+    
+    //now loop through
     for(var i = 0; i < stuff.length; i++) {
         //determine which word we should use for the gender
         if (stuff[i].gender == 'm') {
