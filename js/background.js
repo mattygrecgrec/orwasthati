@@ -7,12 +7,12 @@ const examineIt = (stuff) => {
 
 const dealWithResponse = (stuff) => {
     let info = stuff.json()
-    console.log('The expert info response is   ' + info)
+    //console.log('The expert info response is   ' + info)
     return info;
 }
 
 const checkHttp = (promise) => {
-    console.log('the status of the request is  ' + promise.status)
+    //console.log('the status of the request is  ' + promise.status)
     if (promise.status !== 200) {
        // alert('uh oh...problem getting the expert info back ' + promise.status);
     }
@@ -21,42 +21,19 @@ const checkHttp = (promise) => {
 
 
 
-function makeUl(array) {
-    // Create the list element:
-    var list = document.createElement('ul');
-    for(var i = 0; i < array.length; i++) {
-        console.log(stuff[0].artist + ' released "' + stuff[0].work + '" on ' + stuff[0].releaseDate + ' at the age of ' + stuff[0].ageAtRelease + '.  On ' + stuff[0].dateInMyLife + ' you will be the same age to the day that they were when they released it.')
-        // Create the list item:
-        //var item = document.createElement('li');
-        // Set its contents:
-        //item.appendChild(document.createTextNode(array[i]));
-        // Add it to the list:
-        //list.appendChild(item);
-    }
-    // Finally, return the constructed list:
-    return list;
-}
-
-const setWorksTable = (stuff) => {
-    //console.log(stuff[0].artist + ' released "' + stuff[0].work + '" on ' + stuff[0].releaseDate + ' at the age of ' + stuff[0].ageAtRelease + '.  On ' + stuff[0].dateInMyLife + ' you will be the same age to the day that they were when they released it.')
-    document.getElementById("workResults").appendChild(makeUL(stuff[0].dateInMyLife));
-}
-
-
-
-
-const loopTest = (stuff) => {
+const paintIt = (stuff) => {
     d = new Date()
     d1 = d.toISOString()
     let gender
     
     for(var i = 0; i < stuff.length; i++) {
+        //determine which word we should use for the gender
         if (stuff[i].gender == 'm') {
             gender = "he"
         } else {
             gender = "she"
         }
-        
+        //determine which phrase we should use for the past/present
         let dateOperator
         d2 = stuff[i].dateInMyLife + 'T00:00:00.000Z'
         if (d1 >= d2) {
@@ -65,10 +42,20 @@ const loopTest = (stuff) => {
             dateOperator = "will be"
         }
     
+        //convert the date to a friendly string
+        let d = new Date(stuff[i].dateInMyLife)
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let dNice = days[d.getUTCDay()]
+
+        let months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+        let mNice = months[d.getUTCMonth()]
+        
+        
+        //create the ordered list of works and paint them
         var li = document.createElement("LI")
-        var text = document.createTextNode('On ' + stuff[i].dateInMyLife + ' you ' + dateOperator + ' the same age, to-the-day, that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (age: ' + stuff[i].ageAtRelease + ', Release Date: ' + stuff[i].releaseDate + ').');
+        var text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
         li.appendChild(text)
-        document.getElementById("workResultsText").appendChild(li);
+        document.getElementById('workResultsText').appendChild(li);
     }
 }
 
@@ -95,10 +82,18 @@ document.getElementById("DOBDay").addEventListener("change", showGoButton);
 
 
 
+const sortArray = (arrayOfObjects) => {
+    //const date1 = new Date(arrayOfObjects[1].dateInMyLife)
+    //console.log(date1)
+    const sortedWorks = arrayOfObjects.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
+    console.log(sortedWorks)
+    return sortedWorks
+}
+
+
 //This is what we do when the button is clicked.  First we fetch the data from our API then we create a table baded off the results.
 const getData = (buttonResults) => {
     let dob = document.getElementById("DOBYear").value + '-' + document.getElementById("DOBMonth").value + '-' + document.getElementById("DOBDay").value
-    console.log(dob)
     fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
       "method": "POST",
       "headers": {
@@ -111,7 +106,9 @@ const getData = (buttonResults) => {
     .then(checkHttp)
     .then(dealWithResponse)
     .then(examineIt)
-    .then(loopTest)
+    .then(sortArray)
+ //   .then(examineIt)
+    .then(paintIt)
     .catch(err => {
       console.error(err);
     });
