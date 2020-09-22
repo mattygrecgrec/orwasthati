@@ -1,26 +1,3 @@
-//define a few logging functions we're going to need later
-const examineIt = (stuff) => {
-    console.log(stuff)
-    console.log(stuff.body)
-    return stuff.body;
-}
-
-const dealWithResponse = (stuff) => {
-    let info = stuff.json()
-    //console.log('The expert info response is   ' + info)
-    return info;
-}
-
-const checkHttp = (promise) => {
-    //console.log('the status of the request is  ' + promise.status)
-    if (promise.status !== 200) {
-       // alert('uh oh...problem getting the expert info back ' + promise.status);
-    }
-    return promise;
-}
-
-
-
 const paintIt = (stuff) => {
     d = new Date()
     d1 = d.toISOString()
@@ -95,9 +72,26 @@ const sortArray = (arrayOfObjects) => {
     //const date1 = new Date(arrayOfObjects[1].dateInMyLife)
     //console.log(date1)
     const sortedWorks = arrayOfObjects.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
-    console.log(sortedWorks)
+    //console.log(sortedWorks)
     return sortedWorks
 }
+
+
+const fetchFromServer = (SelectedArray) => {
+    let dob = document.getElementById("DOBYear").value + '-' + document.getElementById("DOBMonth").value + '-' + document.getElementById("DOBDay").value
+    fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
+      "method": "POST",
+      "headers": {
+        "content-type": "text/plain"
+      },
+      "body": JSON.stringify(
+         {'artists': ['James Joyce', 'Bob Dylan'], 'dob': dob}
+      )
+    })
+}
+
+
+
 
 
 //This is what we do when the button is clicked.  First we fetch the data from our API then we create a table baded off the results.
@@ -109,7 +103,7 @@ const getData = (buttonResults) => {
         "content-type": "text/plain"
       },
       "body": JSON.stringify(
-         {'artists': ['James Joyce', 'Bob Dylan'], 'dob': dob}
+         {'artists': buttonResults, 'dob': dob}
       )
     })
     .then(checkHttp)
@@ -117,6 +111,7 @@ const getData = (buttonResults) => {
     .then(examineIt)
     .then(sortArray)
  //   .then(examineIt)
+ //   .then(getSelectedArtists)
     .then(paintIt)
     .catch(err => {
       console.error(err);
@@ -124,4 +119,22 @@ const getData = (buttonResults) => {
 }
 
 
-document.getElementById("generateTable").addEventListener("click", getData);
+const buttonArray = () => {
+    var children = document.getElementById("artistsArea").childNodes;
+   // console.log(children)
+    const aListForFetch = []
+    for(i = 0; i < children.length; i++){
+        //console.log(children[i])
+        if(children[i].nodeName == "INPUT" && children[i].checked) {
+            //console.log(children[i])
+            aListForFetch.push(children[i].value)
+        }
+    }
+   // console.log(aListForFetch)
+    getData(aListForFetch)
+}
+
+
+document.getElementById("generateTable").addEventListener("click", buttonArray);
+
+
