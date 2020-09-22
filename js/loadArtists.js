@@ -29,14 +29,15 @@ const paintArtists = (JsonResponseFromApi) => {
   //  console.log(artistArray)
     for(var i = 0; i < artistArray.length; i++) {
         let c = document.createElement("INPUT")
-        let s = document.createElement("SPAN")
+      //  let s = document.createElement("SPAN")
         let l = document.createElement("LABEL")
 
         c.setAttribute("type", "CHECKBOX")
-        l.setAttribute("for", artistArray[i])
+        //l.setAttribute("for", artistArray[i])
         c.setAttribute("id", [i] + " artist")
         c.setAttribute("value", artistArray[i])
-        s.setAttribute("id", "span"+[i])
+      //  s.setAttribute("id", "span"+[i])
+        
         
     //    c.setAttribute("checked", "checked")
         
@@ -44,10 +45,14 @@ const paintArtists = (JsonResponseFromApi) => {
         l.innerText = artistArray[i]
         c.innerText = artistArray[i]
 
-        aa.appendChild(s)
-        aa.appendChild(c)
+       // aa.appendChild(s)
+        //aa.appendChild(c)
+    //    aa.appendChild(s)
         aa.appendChild(l);
+        l.appendChild(c)
     }
+    //const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
+    //console.log(checkboxes)
     //console.log(document.getElementById("artistForm").value)
 }
 
@@ -71,3 +76,6 @@ const getArtists = () => {
 };
 
 window.addEventListener('load', getArtists)
+
+
+

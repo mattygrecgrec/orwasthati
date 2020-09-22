@@ -1,3 +1,4 @@
+//paint the list of works that come back from the server request.
 const paintIt = (stuff) => {
     d = new Date()
     d1 = d.toISOString()
@@ -48,7 +49,6 @@ const paintIt = (stuff) => {
 
 
 
-
 //hide options until all DOB fields are selected
 function showArtists() {
     var m = document.getElementById("DOBMonth").value;
@@ -69,35 +69,16 @@ document.getElementById("DOBDay").addEventListener("change", showArtists);
 
 
 
-
-
+//sort the results that we get back from the server request so that the dates are earliest to latest.
 const sortArray = (arrayOfObjects) => {
-    //const date1 = new Date(arrayOfObjects[1].dateInMyLife)
-    //console.log(date1)
     const sortedWorks = arrayOfObjects.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
-    //console.log(sortedWorks)
     return sortedWorks
 }
 
 
-const fetchFromServer = (SelectedArray) => {
-    let dob = document.getElementById("DOBYear").value + '-' + document.getElementById("DOBMonth").value + '-' + document.getElementById("DOBDay").value
-    fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
-      "method": "POST",
-      "headers": {
-        "content-type": "text/plain"
-      },
-      "body": JSON.stringify(
-         {'artists': ['James Joyce', 'Bob Dylan'], 'dob': dob}
-      )
-    })
-}
 
 
-
-
-
-//This is what we do when the button is clicked.  First we fetch the data from our API then we create a table baded off the results.
+//This is what we do when the button is clicked.  First we fetch the data from our API then we create a table based off the results.
 const getData = (buttonResults) => {
     let dob = document.getElementById("DOBYear").value + '-' + document.getElementById("DOBMonth").value + '-' + document.getElementById("DOBDay").value
     fetch("https://izas4pssoe.execute-api.us-east-1.amazonaws.com/staging", {
@@ -122,22 +103,48 @@ const getData = (buttonResults) => {
 }
 
 
+
+
+// use this function to generate an array of the selected artists before fetching the results.  This is used in the POST body.
 const buttonArray = () => {
-    var children = document.getElementById("artistsArea").childNodes;
-   // console.log(children)
     const aListForFetch = []
-    for(i = 0; i < children.length; i++){
-        //console.log(children[i])
-        if(children[i].nodeName == "INPUT" && children[i].checked) {
-            //console.log(children[i])
-            aListForFetch.push(children[i].value)
+    var childrenOfDiv = document.getElementById("artistsArea").childNodes;
+   //console.log("the children artistsArea are...   " + childrenOfDiv)
+
+    for(i = 0; i < childrenOfDiv.length; i++){
+        if(childrenOfDiv[i].nodeName == "LABEL" && childrenOfDiv[i].childNodes[1].checked){
+            aListForFetch.push(childrenOfDiv[i].childNodes[1].value)
+            console.log(childrenOfDiv[i].childNodes[1])
         }
     }
-   // console.log(aListForFetch)
-    getData(aListForFetch)
+    //console.log("aListForFetch is  "  + aListForFetch)
+    if (aListForFetch.length == 0 ){
+        //console.log("nothing selected")
+        document.getElementById("buttonError").style.display = "block"
+        let ul = document.getElementById('workResultsText');
+        if (ul) {
+            while (ul.firstChild) {
+                ul.removeChild(ul.firstChild);
+            }
+        }
+    } else {
+        document.getElementById("buttonError").style.display = "none"
+        getData(aListForFetch)
+    }
 }
 
 
 document.getElementById("generateTable").addEventListener("click", buttonArray);
+
+
+
+
+
+
+
+//
+const writeToDemo = () => {
+    document.getElementById("demo").innerText = "yeah!"
+}
 
 

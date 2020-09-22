@@ -1,1 +1,27 @@
+body {
+
+    place-items: center;
+    text-align: center;
+}
+
+
+hr {
+    width:30%
+}
+
+
+#artistsArea {
+    text-align: center;
+
+
+}
+
+
+
+label {
+    background: #e2dcdc;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
 
