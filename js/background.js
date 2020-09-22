@@ -49,20 +49,23 @@ const paintIt = (stuff) => {
 
 
 
-//hide the GO button until all DOB options are selected
-function showGoButton() {
+//hide options until all DOB fields are selected
+function showArtists() {
     var m = document.getElementById("DOBMonth").value;
     var y = document.getElementById("DOBYear").value;
     var d = document.getElementById("DOBDay").value;
     if ( m == '- Month -' || y == '- Year -' || d == '- Day -' ) {
-        document.getElementById('generateTable').style.display = 'none';
+        document.getElementById('artistSelectBox').style.display = 'none';
     } else {
-        document.getElementById('generateTable').style.display = 'inline';
+        document.getElementById('artistSelectBox').style.display = 'inline'
+        document.getElementById('generateTable').style.display = 'inline'
     }
 }
-document.getElementById("DOBYear").addEventListener("change", showGoButton);
-document.getElementById("DOBMonth").addEventListener("change", showGoButton);
-document.getElementById("DOBDay").addEventListener("change", showGoButton);
+document.getElementById("DOBYear").addEventListener("change", showArtists);
+document.getElementById("DOBMonth").addEventListener("change", showArtists);
+document.getElementById("DOBDay").addEventListener("change", showArtists);
+
+
 
 
 

@@ -14,6 +14,7 @@
 
 /* Modal Content */
 .modal-content {
+  text-align: justify;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
