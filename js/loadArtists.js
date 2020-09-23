@@ -26,34 +26,22 @@ const checkHttp = (promise) => {
 const paintArtists = (JsonResponseFromApi) => {
     let artistArray = JsonResponseFromApi.artistList
     const aa = document.getElementById("artistsArea")
-  //  console.log(artistArray)
     for(var i = 0; i < artistArray.length; i++) {
         let c = document.createElement("INPUT")
-      //  let s = document.createElement("SPAN")
         let l = document.createElement("LABEL")
-
+        let s = document.createElement("SPAN")
+        
         c.setAttribute("type", "CHECKBOX")
-        //l.setAttribute("for", artistArray[i])
         c.setAttribute("id", [i] + " artist")
         c.setAttribute("value", artistArray[i])
-      //  s.setAttribute("id", "span"+[i])
-        
-        
-    //    c.setAttribute("checked", "checked")
-        
-        
-        l.innerText = artistArray[i]
-        c.innerText = artistArray[i]
+        c.setAttribute("class", "visually-hidden")
+        s.setAttribute("class", "label-text")
+        s.innerText = artistArray[i]
 
-       // aa.appendChild(s)
-        //aa.appendChild(c)
-    //    aa.appendChild(s)
         aa.appendChild(l);
         l.appendChild(c)
+        l.appendChild(s)
     }
-    //const checkboxes = [...document.querySelectorAll('input[type=checkbox]')]
-    //console.log(checkboxes)
-    //console.log(document.getElementById("artistForm").value)
 }
 
 

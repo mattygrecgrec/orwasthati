@@ -112,9 +112,11 @@ const buttonArray = () => {
    //console.log("the children artistsArea are...   " + childrenOfDiv)
 
     for(i = 0; i < childrenOfDiv.length; i++){
-        if(childrenOfDiv[i].nodeName == "LABEL" && childrenOfDiv[i].childNodes[1].checked){
-            aListForFetch.push(childrenOfDiv[i].childNodes[1].value)
-            console.log(childrenOfDiv[i].childNodes[1])
+        //console.log(childrenOfDiv[i])
+        if(childrenOfDiv[i].nodeName == "LABEL" && childrenOfDiv[i].childNodes[0].checked){
+           // console.log(childrenOfDiv[i].childNodes[0].value)
+            aListForFetch.push(childrenOfDiv[i].childNodes[0].value)
+           // console.log(childrenOfDiv[i].childNodes[0])
         }
     }
     //console.log("aListForFetch is  "  + aListForFetch)

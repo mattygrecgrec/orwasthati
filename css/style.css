@@ -12,16 +12,34 @@ hr {
 
 #artistsArea {
     text-align: center;
-
-
 }
 
 
-
 label {
-    background: #e2dcdc;
     padding: 0.5rem 1rem;
+    background: white;
     border-radius: 0.5rem;
+    border-style: solid;
+    border-color:black;
+    border-width:.5px;
+}
+
+label .label-text {
+    background: white;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -100vw;
+}
+
+input[type=checkbox]:checked + span {
+    color: red;
+    font-style: normal;
+}
+
+label input.check:checked + .label-text {
+    background: lime;
 }
 
 
