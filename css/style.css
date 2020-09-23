@@ -14,7 +14,7 @@ hr {
     text-align: center;
 }
 
-
+/*
 label {
     padding: 0.5rem 1rem;
     background: white;
@@ -38,8 +38,51 @@ input[type=checkbox]:checked + span {
     font-style: normal;
 }
 
-label input.check:checked + .label-text {
+label [type=checkbox]:checked + .label {
     background: lime;
 }
+*/
 
+
+.check {
+  position: absolute;
+    left: -100vw;
+}
+
+label {
+    background: yellow;
+    margin: 0px 5px 0px 3px;
+}
+label .label-text {
+    background: white;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-color:black;
+    border-width:.5px;
+    color:black;
+}
+label input.check:checked + .label-text {
+    background: black;
+    color: white;
+    ;
+}
+
+
+
+
+
+#workResultsText {
+    list-style-type: none;
+    padding-right:10%;
+    padding-left:10%;
+}
+
+li{
+    margin: 20px 0;
+    word-wrap: break-word;
+    text-align:justify;
+    text-justify:auto;
+}
 

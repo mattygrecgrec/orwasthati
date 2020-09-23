@@ -34,9 +34,10 @@ const paintArtists = (JsonResponseFromApi) => {
         c.setAttribute("type", "CHECKBOX")
         c.setAttribute("id", [i] + " artist")
         c.setAttribute("value", artistArray[i])
-        c.setAttribute("class", "visually-hidden")
+     //   c.setAttribute("class", "visually-hidden")
         s.setAttribute("class", "label-text")
         s.innerText = artistArray[i]
+        c.setAttribute("class", "check")
 
         aa.appendChild(l);
         l.appendChild(c)
