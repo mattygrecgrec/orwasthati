@@ -1,5 +1,6 @@
 //paint the list of works that come back from the server request.
 const paintIt = (stuff) => {
+    //console.log("this is the array we're going to sort  " + stuff)
     d = new Date()
     d1 = d.toISOString()
     let gender
@@ -54,7 +55,7 @@ function showArtists() {
     var m = document.getElementById("DOBMonth").value;
     var y = document.getElementById("DOBYear").value;
     var d = document.getElementById("DOBDay").value;
-    console.log(y.length)
+    //console.log(y.length)
     if ( m == '- Month -' || d == '- Day -' || y.length < 4) {
         document.getElementById('artistSelectBox').style.display = 'none';
     } else {
@@ -72,7 +73,8 @@ document.getElementById("DOBDay").addEventListener("change", showArtists);
 
 //sort the results that we get back from the server request so that the dates are earliest to latest.
 const sortArray = (arrayOfObjects) => {
-    const sortedWorks = arrayOfObjects.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
+    //console.log(arrayOfObjects)
+    const sortedWorks = arrayOfObjects.body.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
     return sortedWorks
 }
 
@@ -93,10 +95,9 @@ const getData = (buttonResults) => {
     })
     .then(checkHttp)
     .then(dealWithResponse)
-    .then(examineIt)
+   // .then(examineIt)
     .then(sortArray)
- //   .then(examineIt)
- //   .then(getSelectedArtists)
+   // .then(examineIt)
     .then(paintIt)
     .catch(err => {
       console.error(err);
@@ -113,10 +114,11 @@ const buttonArray = () => {
    //console.log("the children artistsArea are...   " + childrenOfDiv)
 
     for(i = 0; i < childrenOfDiv.length; i++){
-        //console.log(childrenOfDiv[i])
-        if(childrenOfDiv[i].nodeName == "LABEL" && childrenOfDiv[i].childNodes[0].checked){
-           // console.log(childrenOfDiv[i].childNodes[0].value)
-            aListForFetch.push(childrenOfDiv[i].childNodes[0].value)
+       // console.log(childrenOfDiv[i])
+        //console.log(childrenOfDiv[i].nodeName + childrenOfDiv[i].checked)
+        if(childrenOfDiv[i].nodeName == "INPUT" && childrenOfDiv[i].checked){
+           // console.log(childrenOfDiv[i].value)
+            aListForFetch.push(childrenOfDiv[i].value)
            // console.log(childrenOfDiv[i].childNodes[0])
         }
     }

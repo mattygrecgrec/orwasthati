@@ -1,106 +1,20 @@
-body {
+.artistButtonSpan {
+    margin: 100px;
+    display: inline-block;
+}
 
-    place-items: center;
-    text-align: center;
+.margin2 {
+  margin: 5px;
+  }
+
+
+.check-with-label {
+}
+
+.check-with-label:checked + .label-for-check {
+  background-color:black;
+  color:white;
+  border-radius: 8px;
 }
 
 
-hr {
-    width:30%
-}
-
-
-#artistsArea {
-    text-align: center;
-}
-
-
-
-.check {
-  position: absolute;
-    left: -100vw;
-}
-
-label {
-    background: yellow;
-    margin: 0px 5px 0px 3px;
-}
-label .label-text {
-    background: white;
-    padding: 0.5rem 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-color:black;
-    border-width:.5px;
-    color:black;
-}
-label input.check:checked + .label-text {
-    background: black;
-    color: white;
-    ;
-}
-
-
-
-
-
-#workResultsText {
-    list-style-type: none;
-    padding-right:10%;
-    padding-left:10%;
-}
-
-li{
-    margin: 20px 0;
-    word-wrap: break-word;
-    text-align:justify;
-    text-justify:auto;
-}
-
-
-#DOBYear {
-    width: 50px;
-}
-
-
-#enterDOB {
-    margin: 10px;
-}
-
-
-example_f {
-   border-radius: 4px;
-   background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
-   border: none;
-   color: #FFFFFF;
-   text-align: center;
-   text-transform: uppercase;
-   font-size: 22px;
-   padding: 20px;
-   width: 200px;
-   transition: all 0.4s;
-   cursor: pointer;
-   margin: 5px;
- }
- .example_f span {
-   cursor: pointer;
-   display: inline-block;
-   position: relative;
-   transition: 0.4s;
- }
- .example_f span:after {
-   content: '\00bb';
-   position: absolute;
-   opacity: 0;
-   top: 0;
-   right: -20px;
-   transition: 0.5s;
- }
- .example_f:hover span {
-   padding-right: 25px;
- }
- .example_f:hover span:after {
-   opacity: 1;
-   right: 0;
- }
