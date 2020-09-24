@@ -54,14 +54,15 @@ function showArtists() {
     var m = document.getElementById("DOBMonth").value;
     var y = document.getElementById("DOBYear").value;
     var d = document.getElementById("DOBDay").value;
-    if ( m == '- Month -' || y == '- Year -' || d == '- Day -' ) {
+    console.log(y.length)
+    if ( m == '- Month -' || d == '- Day -' || y.length < 4) {
         document.getElementById('artistSelectBox').style.display = 'none';
     } else {
         document.getElementById('artistSelectBox').style.display = 'inline'
         document.getElementById('generateTable').style.display = 'inline'
     }
 }
-document.getElementById("DOBYear").addEventListener("change", showArtists);
+document.getElementById("DOBYear").addEventListener("input", showArtists);
 document.getElementById("DOBMonth").addEventListener("change", showArtists);
 document.getElementById("DOBDay").addEventListener("change", showArtists);
 

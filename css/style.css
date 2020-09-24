@@ -14,34 +14,6 @@ hr {
     text-align: center;
 }
 
-/*
-label {
-    padding: 0.5rem 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-color:black;
-    border-width:.5px;
-}
-
-label .label-text {
-    background: white;
-}
-
-.visually-hidden {
-    position: absolute;
-    left: -100vw;
-}
-
-input[type=checkbox]:checked + span {
-    color: red;
-    font-style: normal;
-}
-
-label [type=checkbox]:checked + .label {
-    background: lime;
-}
-*/
 
 
 .check {
@@ -86,3 +58,49 @@ li{
     text-justify:auto;
 }
 
+
+#DOBYear {
+    width: 50px;
+}
+
+
+#enterDOB {
+    margin: 10px;
+}
+
+
+example_f {
+   border-radius: 4px;
+   background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+   border: none;
+   color: #FFFFFF;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 22px;
+   padding: 20px;
+   width: 200px;
+   transition: all 0.4s;
+   cursor: pointer;
+   margin: 5px;
+ }
+ .example_f span {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   transition: 0.4s;
+ }
+ .example_f span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ .example_f:hover span {
+   padding-right: 25px;
+ }
+ .example_f:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
