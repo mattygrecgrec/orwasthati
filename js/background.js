@@ -1,8 +1,21 @@
+
+const artistUl =  document.getElementById('workResultsText')
+
+/*
+//check to see if the worksResultsText UL element exissts.  If not, create it.  We don't want the card's blank background shadow before the user has selected anything.
+function showUl() {
+    if(document.getElementById('worksResultsText') == null) {
+        ulDom.setAttribute("class", "shown")
+    }
+    buttonArray()
+}
+*/
+
 //paint the list of works that come back from the server request.
 const paintIt = (stuff) => {
     //console.log("this is the array we're going to sort  " + stuff)
-    d = new Date()
-    d1 = d.toISOString()
+    let d = new Date()
+    let d1 = d.toISOString()
     let gender
     
     //remove existing entries
@@ -23,7 +36,7 @@ const paintIt = (stuff) => {
         }
         //determine which phrase we should use for the past/present
         let dateOperator
-        d2 = stuff[i].dateInMyLife + 'T00:00:00.000Z'
+        let d2 = stuff[i].dateInMyLife + 'T00:00:00.000Z'
         if (d1 >= d2) {
             dateOperator = "were"
         } else {
@@ -40,9 +53,11 @@ const paintIt = (stuff) => {
         
         
         //create the ordered list of works and paint them
-        var li = document.createElement("LI")
-        var text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
+        let li = document.createElement("LI")
+        let text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
         li.appendChild(text)
+        
+        
         document.getElementById('workResultsText').appendChild(li);
     }
 }
@@ -95,7 +110,7 @@ const getData = (buttonResults) => {
     })
     .then(checkHttp)
     .then(dealWithResponse)
-   // .then(examineIt)
+    .then(examineIt)
     .then(sortArray)
    // .then(examineIt)
     .then(paintIt)
@@ -122,37 +137,28 @@ const buttonArray = () => {
            // console.log(childrenOfDiv[i].childNodes[0])
         }
     }
-    //console.log("aListForFetch is  "  + aListForFetch)
-    if (document.getElementById("buttonError"))
-    
+    console.log("aListForFetch is  "  + aListForFetch)
     
     if (aListForFetch.length == 0){
         //console.log("nothing selected")
         document.getElementById("buttonError").style.display = "block"
-        let ul = document.getElementById('workResultsText');
+        artistUl.setAttribute("class", "hideThis")
+
+      /*
         if (ul) {
             while (ul.firstChild) {
                 ul.removeChild(ul.firstChild);
             }
-        }
+        }*/
     } else {
         document.getElementById("buttonError").style.display = "none"
+        artistUl.setAttribute("class", "w3-container w3-center w3-ul w3-card-4 shown")
+
         getData(aListForFetch)
     }
 }
 
 
+//here is the listener to set this all in motion when the user clicks the go button.
 document.getElementById("generateTable").addEventListener("click", buttonArray);
-
-
-
-
-
-
-
-//
-const writeToDemo = () => {
-    document.getElementById("demo").innerText = "yeah!"
-}
-
 

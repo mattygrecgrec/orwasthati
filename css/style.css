@@ -17,4 +17,10 @@
   border-radius: 8px;
 }
 
+.hideThis {
+    display:none;
+}
 
+.shown {
+    display:inline-block;
+}
