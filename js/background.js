@@ -123,7 +123,7 @@ const buttonArray = () => {
         }
     }
     //console.log("aListForFetch is  "  + aListForFetch)
-    if (aListForFetch.length == 0 ){
+    if (aListForFetch.length == 0)){
         //console.log("nothing selected")
         document.getElementById("buttonError").style.display = "block"
         let ul = document.getElementById('workResultsText');
