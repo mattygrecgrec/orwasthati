@@ -50,9 +50,9 @@ const paintIt = (stuff) => {
         if(stuff[i].dateInMyLife == currentTime){
             li.appendChild(document.createTextNode("Here you are"))
         } else {
-            let text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
+            let text = document.createTextNode('You ' + dateOperator + ' the exact age, ' + stuff[i].ageAtRelease + ', that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
             
-            let textSmall = mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').'
+            let textSmall = 'You ' + dateOperator + ' the exact age, ' + stuff[i].ageAtRelease + ', that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').'
             
             let thumb = document.createElement("IMG")
             let div = document.createElement("DIV")
@@ -66,7 +66,7 @@ const paintIt = (stuff) => {
                 li.setAttribute("class","w3-bar")
                 div.setAttribute("class", "w3-bar-item")
                 span.setAttribute("class", "w3-large")
-                span.innerText = stuff[i].work
+                span.innerText = mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + '  -  ' + stuff[i].work
                 span2.innerText = textSmall
                 
                 li.appendChild(thumb)
@@ -83,7 +83,7 @@ const paintIt = (stuff) => {
                 li.setAttribute("class","w3-bar")
                 div.setAttribute("class", "w3-bar-item")
                 span.setAttribute("class", "w3-large")
-                span.innerText = stuff[i].work
+                span.innerText = mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + '  -  ' + stuff[i].work
                 span2.innerText = textSmall
                     
                 li.appendChild(thumb)
@@ -184,7 +184,7 @@ const buttonArray = () => {
 
     } else {
         document.getElementById("buttonError").style.display = "none"
-        artistUl.setAttribute("class", "w3-ul w3-card-4 shown")
+        artistUl.setAttribute("class", " w3-ul w3-card-4 shown")
 
         getData(aListForFetch)
     }

@@ -22,5 +22,5 @@
 }
 
 .shown {
-    display:inline-block;
+    display:inherit;
 }
