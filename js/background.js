@@ -1,15 +1,8 @@
 
 const artistUl =  document.getElementById('workResultsText')
+const currentTime = new Date();
 
-/*
-//check to see if the worksResultsText UL element exissts.  If not, create it.  We don't want the card's blank background shadow before the user has selected anything.
-function showUl() {
-    if(document.getElementById('worksResultsText') == null) {
-        ulDom.setAttribute("class", "shown")
-    }
-    buttonArray()
-}
-*/
+
 
 //paint the list of works that come back from the server request.
 const paintIt = (stuff) => {
@@ -54,10 +47,52 @@ const paintIt = (stuff) => {
         
         //create the ordered list of works and paint them
         let li = document.createElement("LI")
-        let text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
-        li.appendChild(text)
-        
-        
+        if(stuff[i].dateInMyLife == currentTime){
+            li.appendChild(document.createTextNode("Here you are"))
+        } else {
+            let text = document.createTextNode(mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
+            
+            let textSmall = mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + ' - You ' + dateOperator + ' the exact age(' + stuff[i].ageAtRelease + ') that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').'
+            
+            let thumb = document.createElement("IMG")
+            let div = document.createElement("DIV")
+            let span = document.createElement("SPAN")
+            let span2 = document.createElement("SPAN")
+            let br = document.createElement("BR")
+            if(typeof stuff[i].imageUrl === 'undefined'){
+                thumb.setAttribute("src", "https://orwasthati.s3.amazonaws.com/workImages/rs-146623-d65dcb014f0ce1daaaa2da683fbc98e2f85e0132.jpg")
+                thumb.setAttribute("class", "w3-bar-item w3-circle w3-hide-small")
+                thumb.setAttribute("style","width:85px")
+                li.setAttribute("class","w3-bar")
+                div.setAttribute("class", "w3-bar-item")
+                span.setAttribute("class", "w3-large")
+                span.innerText = stuff[i].work
+                span2.innerText = textSmall
+                
+                li.appendChild(thumb)
+                li.appendChild(div)
+                div.appendChild(span)
+                div.appendChild(br)
+                div.appendChild(span2)
+
+                
+            } else {
+                thumb.setAttribute("src", stuff[i].imageUrl)
+                thumb.setAttribute("class", "w3-bar-item w3-circle w3-hide-small")
+                thumb.setAttribute("style","width:85px")
+                li.setAttribute("class","w3-bar")
+                div.setAttribute("class", "w3-bar-item")
+                span.setAttribute("class", "w3-large")
+                span.innerText = stuff[i].work
+                span2.innerText = textSmall
+                    
+                li.appendChild(thumb)
+                li.appendChild(div)
+                div.appendChild(span)
+                div.appendChild(br)
+                div.appendChild(span2)
+            }
+        }
         document.getElementById('workResultsText').appendChild(li);
     }
 }
@@ -88,7 +123,10 @@ document.getElementById("DOBDay").addEventListener("change", showArtists);
 
 //sort the results that we get back from the server request so that the dates are earliest to latest.
 const sortArray = (arrayOfObjects) => {
-    //console.log(arrayOfObjects)
+    //console.log(arrayOfObjects.body)
+    let myArray = arrayOfObjects.body
+    myArray.push({'dateInMyLife': currentTime ,'yourDob':'You are here'})
+
     const sortedWorks = arrayOfObjects.body.sort((a, b) => new Date(a.dateInMyLife) - new Date(b.dateInMyLife))
     return sortedWorks
 }
@@ -110,7 +148,7 @@ const getData = (buttonResults) => {
     })
     .then(checkHttp)
     .then(dealWithResponse)
-    .then(examineIt)
+   // .then(examineIt)
     .then(sortArray)
    // .then(examineIt)
     .then(paintIt)
@@ -144,15 +182,9 @@ const buttonArray = () => {
         document.getElementById("buttonError").style.display = "block"
         artistUl.setAttribute("class", "hideThis")
 
-      /*
-        if (ul) {
-            while (ul.firstChild) {
-                ul.removeChild(ul.firstChild);
-            }
-        }*/
     } else {
         document.getElementById("buttonError").style.display = "none"
-        artistUl.setAttribute("class", "w3-container w3-center w3-ul w3-card-4 shown")
+        artistUl.setAttribute("class", "w3-ul w3-card-4 shown")
 
         getData(aListForFetch)
     }
