@@ -47,8 +47,14 @@ const paintIt = (stuff) => {
         
         //create the ordered list of works and paint them
         let li = document.createElement("LI")
+        let span = document.createElement("SPAN")
         if(stuff[i].dateInMyLife == currentTime){
-            li.appendChild(document.createTextNode("Here you are"))
+            span.innerText = "you are here right now" + d
+            span.setAttribute("class","w3-center" )
+            li.setAttribute("class", "w3-theme-l4 w3-center")
+            li.appendChild(span)
+            
+            
         } else {
             let text = document.createTextNode('You ' + dateOperator + ' the exact age, ' + stuff[i].ageAtRelease + ', that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
             
