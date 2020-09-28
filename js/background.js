@@ -49,7 +49,7 @@ const paintIt = (stuff) => {
         let li = document.createElement("LI")
         let span = document.createElement("SPAN")
         if(stuff[i].dateInMyLife == currentTime){
-            span.innerText = "you are here right now" + d
+            span.innerText = "You are here right now - " + mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear()
             span.setAttribute("class","w3-center" )
             li.setAttribute("class", "w3-theme-l4 w3-center")
             li.appendChild(span)
