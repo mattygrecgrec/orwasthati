@@ -14,10 +14,10 @@
     <span id="?button" class="w3-text-black w3-display-topleft w3-padding-large  w3-large w3-opacity">?</span>
 </header>
 
-<div class="w3-container">
-  <div class="w3-card-4">
+<div class="w3-container w3-center">
+  <div class="w3-card-4" style="width:50p%;max-width:300px">
     <div class="w3-container w3-theme-l5">
-      <h2>Enter your birthday</h2>
+      <h3>Enter your birthday</h3>
     </div>
     <form class="w3-container">
       <p>
@@ -80,8 +80,10 @@
 
 <div id="artistSelectBox" style="display:none" class="w3-container w3-center">
     <div class="w3-card-4">
+        <div class="w3-container w3-theme-l5">
+            <h3>Select at least one</h3>
+        </div>
         <br>
-        <div id="selectArtists" class="w3-container">Select at least one</div><br>
         <div id="artistsArea" class="w3-container w3-center">
         </div>
         <br>
@@ -96,12 +98,21 @@
 
 </div>
 
-<div id="worksResults" class="w3-container w3-card">
-    <ul id="workResultsText" class="w3-container w3-ul w3-card-4 hideThis" ></ul>
+
+
+
+<div id="worksResults" class="w3-container" style="display:none">
+    <ul id="workResultsText" class="w3-container w3-ul w3-card-4 hideThis">
+    </ul>
+</div>
+<br>
+<br>
 </div>
 
-</div>
 
+
+<div class="footer">
+  <p>Amplify | Lambda | API Gateway | DynamoDb</p>
 </div>
 
 
@@ -117,9 +128,6 @@
 
 <script src="js/background.js"></script>
 <script src="js/modal.js"></script>
-
-
-
 
 </body>
 </html>

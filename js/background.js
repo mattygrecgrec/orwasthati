@@ -1,4 +1,5 @@
 
+const artistUlBox =  document.getElementById('workResults')
 const artistUl =  document.getElementById('workResultsText')
 const currentTime = new Date();
 
@@ -56,6 +57,7 @@ const paintIt = (stuff) => {
             
             
         } else {
+            document.getElementById('worksResults').style.display = 'inherit';
             let text = document.createTextNode('You ' + dateOperator + ' the exact age, ' + stuff[i].ageAtRelease + ', that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').');
             
             let textSmall = 'You ' + dateOperator + ' the exact age, ' + stuff[i].ageAtRelease + ', that ' + stuff[i].artist + ' was when ' + gender + ' released "' + stuff[i].work + '" (Release Date: ' + stuff[i].releaseDate + ').'
@@ -66,6 +68,7 @@ const paintIt = (stuff) => {
             let span = document.createElement("SPAN")
             let span2 = document.createElement("SPAN")
             let br = document.createElement("BR")
+            let h = document.createElement("H3")
             
             thumb.setAttribute("src", stuff[i].imageUrl)
             thumb.setAttribute("class", "w3-bar-item w3-hide-small")

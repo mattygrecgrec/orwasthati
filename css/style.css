@@ -56,3 +56,22 @@ header {
 .w3-hover-theme:hover {color:#fff !important; background-color:#253641 !important}
 .w3-hover-text-theme:hover {color:#253641 !important}
 .w3-hover-border-theme:hover {border-color:#253641 !important}
+
+
+
+.w3-card-4 {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #eff3f6;
+   color: white;
+   text-align: center;
+}
