@@ -62,9 +62,31 @@ const paintIt = (stuff) => {
             
             let thumb = document.createElement("IMG")
             let div = document.createElement("DIV")
+            let div2 = document.createElement("DIV")
             let span = document.createElement("SPAN")
             let span2 = document.createElement("SPAN")
             let br = document.createElement("BR")
+            
+            thumb.setAttribute("src", stuff[i].imageUrl)
+            thumb.setAttribute("class", "w3-bar-item w3-hide-small")
+            thumb.setAttribute("style","width:85px")
+            li.setAttribute("class","w3-bar w3-container")
+            div.setAttribute("class", "w3-bar-item")
+            div2.setAttribute("class", "w3-bar-item")
+            span.setAttribute("class", "w3-large")
+            span.innerText = mNice + ' ' + d.getDate() + ', ' + d.getUTCFullYear() + '  -  ' + stuff[i].work
+            span2.innerText = textSmall
+                
+            
+            li.appendChild(div2)
+            div2.appendChild(thumb)
+            div.appendChild(br)
+            li.appendChild(div)
+            div.appendChild(span)
+            div.appendChild(br)
+            div.appendChild(span2)
+            
+            /*
             if(typeof stuff[i].imageUrl === 'undefined'){
                 thumb.setAttribute("src", "https://orwasthati.s3.amazonaws.com/workImages/rs-146623-d65dcb014f0ce1daaaa2da683fbc98e2f85e0132.jpg")
                 thumb.setAttribute("class", "w3-bar-item w3-circle w3-hide-small")
@@ -97,7 +119,8 @@ const paintIt = (stuff) => {
                 div.appendChild(span)
                 div.appendChild(br)
                 div.appendChild(span2)
-            }
+            } */
+            
         }
         document.getElementById('workResultsText').appendChild(li);
     }
