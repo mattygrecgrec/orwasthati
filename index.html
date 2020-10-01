@@ -4,16 +4,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-green.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 
 <body>
-    
 <script src="js/loadArtists.js"></script>
 
+<header class="w3-display-container w3-padding-24">
+    <span id="?button" class="w3-text-black w3-display-topleft w3-padding-large  w3-large w3-opacity">?</span>
+</header>
+
 <div class="w3-container">
-    <span id="?button" class="w3-small">?</span>
+  <div class="w3-card-4">
+    <div class="w3-container w3-theme-l5">
+      <h2>Enter your birthday</h2>
+    </div>
+    <form class="w3-container">
+      <p>
+      <select id="DOBMonth" class="w3-select" name="option">
+          <option value="" disabled selected>Month</option>
+          <option value="01" selected >January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+      </select></p>
+      <p>
+      <select id="DOBDay" class="w3-select" name="option">
+      <option value="" disabled selected>day</option>
+      <option value="01" selected>1</option>
+      <option value="02">2</option>
+      <option value="03">3</option>
+      <option value="04">4</option>
+      <option value="05">5</option>
+      <option value="06">6</option>
+      <option value="07">7</option>
+      <option value="08">8</option>
+      <option value="09">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      </select></p>
+      <p><input id="DOBYear" class="w3-input" type="text" placeholder="year"></p>
+    </form>
+  </div>
 </div>
+
+<br>
+
+<div id="artistSelectBox" style="display:none" class="w3-container w3-center">
+    <div class="w3-card-4">
+        <br>
+        <div id="selectArtists" class="w3-container">Select at least one</div><br>
+        <div id="artistsArea" class="w3-container w3-center">
+        </div>
+        <br>
+        <div class="w3-center w3-padding-24">
+            <button id="generateTable" style="display:none" class="w3-button w3-ripple w3-theme-l2">Go</button>
+            <p id="buttonError" style="display:none" class="w3-container">U gotta pick an artist...</p>
+        </div>
+    </div>
+</div>
+
+<br>
+
+</div>
+
+<div id="worksResults" class="w3-container w3-card">
+    <ul id="workResultsText" class="w3-container w3-ul w3-card-4 hideThis" ></ul>
+</div>
+
+</div>
+
+</div>
+
 
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content">
@@ -23,95 +113,13 @@
         16 years before in 1888 when Bloom was of Stephen's present age Stephen was 6.16 years after in 1920 when Stephen would be of Bloom's present age Bloom would be 54. In 1936 when Bloom would be 70 and Stephen 54 their ages initially in the ratio of 16 to 0 would be as 17 1/2 to 13 1/2, the proportion increasing and the disparity diminishing according as arbitrary future years were added, for if the proportion existing in 1883 had continued immutable, conceiving that to be possible, till then 1904 when Stephen was 22 Bloom would be 374 and in 1920 when Stephen would be 38, as Bloom then was, Bloom would be 646 while in 1952 when Stephen would have attained the maximum postdiluvian age of 70 Bloom, being 1190 years alive having been born in the year 714, would have surpassed by 221 years the maximum antediluvian age, that of Methusalah, 969 years, while, if Stephen would continue to live until he would attain that age in the year 3072 A.D., Bloom would have been obliged to have been alive 83,300 years, having been obliged to have been born in the year 81,396 B.C."</p>
       </div>
     </div>
-  </div>
 
 
-<div id="enterDOB" class="w3-container">
-    <h4 class=" w3-center"> What is your birthday?</h4><br>
-    <div class="w3-third">
-        <select id="DOBMonth" class="w3-select w3-margin" name="option">
-            <option value="" disabled selected>Month</option>
-            <option value="01" selected >January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-        </select>
-    </div>
-    
-    <div class="w3-third">
-        <select id="DOBDay" class="w3-select w3-margin" name="option">
-            <option value="" disabled selected>day</option>
-            <option value="01" selected>1</option>
-            <option value="02">2</option>
-            <option value="03">3</option>
-            <option value="04">4</option>
-            <option value="05">5</option>
-            <option value="06">6</option>
-            <option value="07">7</option>
-            <option value="08">8</option>
-            <option value="09">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-            <option value="21">21</option>
-            <option value="22">22</option>
-            <option value="23">23</option>
-            <option value="24">24</option>
-            <option value="25">25</option>
-            <option value="26">26</option>
-            <option value="27">27</option>
-            <option value="28">28</option>
-            <option value="29">29</option>
-            <option value="30">30</option>
-            <option value="31">31</option>
-        </select>
-    </div>
-
-    <div class="w3-third">
-        <input id="DOBYear" class="w3-input w3-border w3-margin" type="text" placeholder="year">
-    </div>
-</div>
-
-
-<div id="artistSelectBox" style="display:none" class="w3-center">
-    <br>
-    <div id="selectArtists" class="w3-container">Select at least one</div><br>
-    <div id="artistsArea" class="w3-container w3-center">
-    </div>
-    <br>
-    <hr>
-</div>
-
-<div class="w3-container w3-center">
-    <button id="generateTable" style="display:none" class="w3-button w3-ripple w3-light-grey">Go</button>
-    <p id="buttonError" style="display:none" class="w3-container">U gotta pick an artist...</p>
-</div>
-<br>
-
-</div>
-
-<div id="worksResults">
-    <ul id="workResultsText" class="w3-container w3-ul w3-card-4 hideThis" ></ul>
-</div>
-
-</div>
 <script src="js/background.js"></script>
 <script src="js/modal.js"></script>
+
+
+
+
 </body>
 </html>
