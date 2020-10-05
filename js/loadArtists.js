@@ -29,7 +29,6 @@ const paintArtists = (JsonResponseFromApi) => {
         let c = document.createElement("INPUT")
         let l = document.createElement("LABEL")
         let s = document.createElement("SPAN")
-      //  let b = document.createElement("BUTTON")
         
         c.setAttribute("type", "CHECKBOX")
         c.setAttribute("id", [i] + " artist")
@@ -37,20 +36,12 @@ const paintArtists = (JsonResponseFromApi) => {
         c.setAttribute("hidden", "")
         c.setAttribute("class","check-with-label")
         l.setAttribute("for", [i] + " artist")
-       // l.setAttribute("class", "artistLabel")
         l.setAttribute("class", "label-for-check w3-border w3-round-large w3-padding w3-show-inline-block margin2")
-        
-     //   c.setAttribute("class", "visually-hidden")
-     //   s.setAttribute("class", "label-text")
-        
-        
         
         l.innerText = artistArray[i]
 
-
         aa.appendChild(c);
         aa.appendChild(l)
-       // l.appendChild(s)
     }
 }
 
